@@ -1,8 +1,8 @@
 Summary:	Aborts TCP/IP connections
 Name:		cutter
 Version:	1.03
-Release:	%mkrel 6
-License:	GPLv2
+Release:	%mkrel 7
+License:	GPLv2+
 Group:		Networking/Other
 URL:		http://www.lowth.com/cutter
 Source0:	%{name}-%{version}.tar.bz2

@@ -1,0 +1,42 @@
+diff -ru cutter-1.02.orig/cutter.c cutter-1.02/cutter.c
+--- cutter-1.02.orig/cutter.c	2003-06-16 12:35:02.000000000 -0700
++++ cutter-1.02/cutter.c	2003-08-22 17:12:42.000000000 -0700
+@@ -493,25 +493,25 @@
+ 			(match(ip1,port1,src1n,sport1) && match(ip2,port2,dst1n,dport1)) ||
+ 			(match(ip1,port1,dst1n,dport1) && match(ip2,port2,src1n,sport1))
+ 		) {
+-			/*
+-			 * local network to public network - forwarded connection
+-			 */
+ 
++			found++;
++			
+ 			if (!localip(src1n) && !localip(dst1n) && !localip(src2n) && localip(dst2n)) {
+-				found ++;
++				/* local network to public network - nated connection */
+ 				printf("For connection %s:%d -> %s:%d\n", src1, sport1, dst1, dport1);
+-				ok = send_rst(dst1,dport1,src1,sport1) && ok;
+-				ok = send_rst(dst2,dport2,src2,sport2) && ok ;
+ 			}
+-
+-			/* Inbound connection forwarded to private network device */
+-
++			
+ 			else if (!localip(src1n) && localip(dst1n) && !localip(src2n) && !localip(dst2n)) {
+-				found ++;
++				/* inbound connection nated to private network device */
+ 				printf("For connection %s:%d -> %s:%d\n", dst2, dport2, src2, sport2);
+-				ok = send_rst(dst1,dport1,src1,sport1) && ok;
+-				ok = send_rst(dst2,dport2,src2,sport2) && ok;
++			} 
++			else {
++				/* non nat'ed connection */
++				printf("For connection %s:%d -> %s:%d\n", src1, sport1, dst1, dport1);
+ 			}
++			
++			ok = send_rst(dst1,dport1,src1,sport1) && ok;
++			ok = send_rst(dst2,dport2,src2,sport2) && ok;
+ 		}
+ 	}
+ 
+Only in cutter-1.02: cutter.c~

@@ -4,7 +4,7 @@ Version:	1.03
 Release:	9
 License:	GPLv2+
 Group:		Networking/Other
-URL:		http://www.lowth.com/cutter
+URL:		https://www.lowth.com/cutter
 Source0:	%{name}-%{version}.tar.bz2
 Patch1:		%{name}-1.02-fixnonnatted.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root

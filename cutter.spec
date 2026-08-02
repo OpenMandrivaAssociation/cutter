@@ -1,7 +1,7 @@
 Summary:	Aborts TCP/IP connections
 Name:		cutter
-Version:	1.03
-Release:	9
+Version:	1.04
+Release:	1
 License:	GPLv2+
 Group:		Networking/Other
 URL:		https://www.lowth.com/cutter
@@ -16,7 +16,7 @@ abort TCP/IP connections routed over the firewall or router on which it is run.
 %prep
 
 %setup -q
-%patch1 -p1 -b .fixnonnatted
+%patch -P1 -p1 -b .fixnonnatted
 
 %build
 
